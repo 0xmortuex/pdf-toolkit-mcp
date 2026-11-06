@@ -1,0 +1,18 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.0xmortuex/pdf-toolkit-mcp",
+  "description": "Everyday PDF tasks for an AI agent with zero system dependencies: info, text, search, tables, merge, split, rotate, images.",
+  "repository": {
+    "url": "https://github.com/0xmortuex/pdf-toolkit-mcp",
+    "source": "github"
+  },
+  "version": "0.1.0",
+  "packages": [
+    {
+      "registryType": "pypi",
+      "identifier": "pdf-toolkit-mcp",
+      "version": "0.1.0",
+      "transport": { "type": "stdio" }
+    }
+  ]
+}
