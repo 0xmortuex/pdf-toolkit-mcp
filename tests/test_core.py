@@ -170,6 +170,9 @@ def test_search_case_and_turkish(sb, text_pdf):
     assert "5 match(es)" in core.search_pdf(sb, "doc.pdf", "chapter")
     assert "No matches" in core.search_pdf(sb, "doc.pdf", "CHAPTER", case_sensitive=True)
     assert "5 match(es)" in core.search_pdf(sb, "doc.pdf", "öğrenci şarkısı")
+    # dotted/dotless I fold correctly in both directions
+    assert "5 match(es)" in core.search_pdf(sb, "doc.pdf", "istanbul'da")
+    assert "5 match(es)" in core.search_pdf(sb, "doc.pdf", "ÖĞRENCI ŞARKISI")
 
 
 def test_search_phrase_across_lines(sb, text_pdf):
@@ -223,6 +226,7 @@ def test_tables_none_found_and_borderless(sb, text_pdf, borderless_pdf):
     assert "No tables found" in ruled
     out = core.extract_tables(sb, "borderless.pdf", strategy="text")
     assert "| Name | Score | Grade |" in out and "| Linus | 88 | B |" in out
+    assert "(4 rows x 3 cols)" in out and "|  |  |  |" not in out  # blank spacer rows dropped
 
 
 def test_tables_bad_args_and_password(sb, table_pdf, encrypted_pdf):

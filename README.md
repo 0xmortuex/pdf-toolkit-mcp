@@ -121,6 +121,10 @@ Page ranges are 1-based: `1-3,5,7-` (`7-` means page 7 to the end).
   `strategy="text"` and may need checking.
 - Encrypted outputs, form filling, annotations and redaction are out of scope.
 
+## Learn how it is built
+
+[pdf-mcp-the-hard-way](https://github.com/0xmortuex/pdf-mcp-the-hard-way) is a seven-module tutorial that builds a minimal version of this server from the raw bytes of a PDF up.
+
 ## Tests
 
 ```bash

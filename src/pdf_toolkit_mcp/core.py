@@ -569,7 +569,9 @@ def extract_tables(
     try:
         with pdfplumber.open(str(p), password=password or "") as pdf:
             for i in selected:
-                tables = [t for t in pdf.pages[i].extract_tables(table_settings=settings) if t]
+                raw_tables = pdf.pages[i].extract_tables(table_settings=settings)
+                # The 'text' strategy emits all-blank rows between lines of words: drop them.
+                tables = [t for t in ([r for r in tb if any(_cell(c) for c in r)] for tb in raw_tables) if t]
                 for k, rows in enumerate(tables, 1):
                     shape = f"{len(rows)} rows x {max(len(r) for r in rows)} cols"
                     title = f"Table {k} on page {i + 1} ({shape})"
